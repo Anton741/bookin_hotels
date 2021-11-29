@@ -1,55 +1,58 @@
-import {USER_AUTHENTICATION, SHOW_ALERT, SEARCH_HOTEL, LOAD_CITY, ADD_BOOKMARK, DELETE_BOOKMARK, SORTING} from './type' 
+import  {LOAD_HOTELS, SET_HOTELS, LOGIN_IN, CLICK_FAVORITE} from './type' 
 
-export function authenticationValid(credentinal){
+export function searchHotels(payload){
   return {
-    type: USER_AUTHENTICATION,
-    payload: credentinal,
+    type: LOAD_HOTELS,
+    payload: payload
   }
 }
 
-export function showAlert(message, target){
-  console.log({[target]: message});
+export function setHotels(payload){
   return {
-    type: SHOW_ALERT,
-    payload: {[target]: message}
+    type: SET_HOTELS,
+    payload: payload
   }
 }
 
-export function searchHotel(message){
+export function logIn({password, email}){
   return {
-    type: SEARCH_HOTEL,
-    payload: message,
+    type: LOGIN_IN,
+    password: password,
+    login: email
   }
 }
 
-export function loadCity(city, checkIN, days){
-  let checkOut = new Date(checkIN)
-  checkOut.setDate(checkOut.getDate() + days);
-  checkOut = checkOut.toISOString().slice(0,10)
-  return async dispatch => {
-    const response = await fetch(`http://engine.hotellook.com/api/v2/cache.json?location=${city}&currency=rub&checkIn=${checkIN}&checkOut=${checkOut}&limit=100`)
-    const json = await response.json()
-    dispatch({type: LOAD_CITY, payload: json})
-  }
-}
 
-export function addBookmark(bookmark){
+// export function showAlert(message, target){
+//   console.log({[target]: message});
+//   return {
+//     type: SHOW_ALERT,
+//     payload: {[target]: message}
+//   }
+// }
+
+
+
+
+
+export function clickOnFavourites(bookmark){
+  console.log(bookmark);
   return {
-    type: ADD_BOOKMARK,
+    type: CLICK_FAVORITE,
     payload: bookmark,
   }
 }
-export function deleteBookmark(bookmark){
-  return {
-    type: DELETE_BOOKMARK,
-    payload: bookmark,
-  }
-}
+// export function deleteBookmark(bookmark){
+//   return {
+//     type: DELETE_BOOKMARK,
+//     payload: bookmark,
+//   }
+// }
 
-export function sortingHotel(item){
-  return {
-    type: SORTING,
-    payload: item
-  }
+// export function sortingHotel(item){
+//   return {
+//     type: SORTING,
+//     payload: item
+//   }
 
-}
+// }

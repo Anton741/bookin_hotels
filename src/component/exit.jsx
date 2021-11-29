@@ -2,22 +2,19 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 const Exit = () => {
-  const data = useSelector((state) => state.AuthValidation);
-  const bookmark = useSelector((state) => state.app)
+  const current_session = useSelector((state) => state.user); 
   const history = useHistory();
   const handleExit = () => {
-
+    current_session.isLogin = false
     let users = JSON.parse(localStorage.getItem('users'));
     users.forEach(user => {
-    if (user.email === data.email && user.password=== data.password){
-        data.password = '';
-        data.email = ''
-        user.bookmarks = bookmark.bookmark;
-        bookmark.bookmark = [];
+    if (user.id === current_session.current_user.id){
+        user.bookmarks = current_session.current_user.bookmarks
       }
     })
     localStorage.setItem('users', JSON.stringify(users));
     history.push('/');
+    
   };
   return <div className="exit__btn" onClick={handleExit}>
       Выйти 

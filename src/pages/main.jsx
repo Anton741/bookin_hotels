@@ -1,7 +1,7 @@
 import SearchForm from '../component/searchForm';
 import Favourites from '../component/favourites';
 import LineCountFavourites from '../component/lineCounFavorites';
-import PathLine from '../component/pathLine';
+// import PathLine from '../component/pathLine';
 import Exit from '../component/exit';
 import Hotels from '../component/hotels';
 import Carousel from '../component/carousel';
@@ -26,7 +26,7 @@ const Main = () => {
             </div>
             <div className="main__column-big column">
               <div className="big-column__row">
-                <PathLine />
+                {/* <PathLine /> */}
               </div>
               <div className="big-column__row">
                 <Carousel />

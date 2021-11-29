@@ -1,7 +1,12 @@
 export const USER_AUTHENTICATION = "USER_AUTHENTICATION"
 export const SHOW_ALERT = "SHOW_ALERT"
 export const SEARCH_HOTEL = "SEARCH_HOTEL"
-export const LOAD_CITY = "LOAD_CITY"
 export const ADD_BOOKMARK = "ADD_BOOKMARK"
 export const DELETE_BOOKMARK = "DELETE_BOOKMARK"
 export const SORTING = "SORTING"
+
+
+export const LOAD_HOTELS= "LOAD_HOTELS"
+export const SET_HOTELS = "SET_HOTELS"
+export const LOGIN_IN = "LOGIN_IN"
+export const CLICK_FAVORITE = "CLICK_FAVORITE"

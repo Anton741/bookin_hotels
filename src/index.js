@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {createStore, compose, applyMiddleware} from 'redux'
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from "./redux/saga/rootSaga"
 import { BrowserRouter } from "react-router-dom";
 import {Provider} from 'react-redux'
 import { connectRouter } from "connected-react-router";
-import thunk  from "redux-thunk"
-import {rootReducer} from './redux/rootReducer'
+import { rootReducer } from "./redux/rootReducer";
+
 
 
 import App from './app';
@@ -16,9 +18,9 @@ import './index.css';
 
 export const history = createHistory();
 
-
-const store = createStore(connectRouter(history)(rootReducer), compose(applyMiddleware(thunk)))
-
+const sagaMiddleware = createSagaMiddleware()
+const store = createStore(connectRouter(history)(rootReducer), compose(applyMiddleware(sagaMiddleware)))
+sagaMiddleware.run(rootSaga)
     ReactDOM.render(
       <Provider store={store}>
         <BrowserRouter>

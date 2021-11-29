@@ -3,10 +3,10 @@ import Hotel from './hotel'
 
 
 const Hotels = () => {
-  const hotels = useSelector((state) => state.searchHotel.hotel_city);
+  const hotels = useSelector((state) => state.hotels.hotels);
   return (
     <>
-      {hotels.map(hotel => {
+      {hotels && hotels.map(hotel => {
       return <Hotel hotel={hotel} key={hotel.hotelId} />})}
     </>
   );

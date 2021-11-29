@@ -6,7 +6,6 @@ import img3 from '../img/slider/img3.png';
 const Carousel = () => {
   const imagesPath = [];
   imagesPath.push(img1, img2, img3, img3, img1, img2, img3);
-  
   return(
   <div className="slider">
     {imagesPath.map((imgPath, index) => {

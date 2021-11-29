@@ -1,17 +1,26 @@
-import {  useDispatch, useSelector } from 'react-redux';
-import { searchHotel, loadCity } from '../redux/action';
+import {  useDispatch } from 'react-redux';
+import {useState, useEffect} from "react"
+import { searchHotels } from '../redux/action';
 
 const SearchForm = () => {
   const dispatch = useDispatch();
-  const parametrs = useSelector((state) => state.searchHotel.searchParametrs);
-  const handleChange = ({ target }) => {
-    dispatch(searchHotel({ [target.name]: target.value }));
-    searchHotel({ [target.name]: target.value });
+  const [searchValue, setSearchValue] = useState({
+    city: 'Москва',
+    checkIn: new Date().toISOString().slice(0, 10),
+    countDays: 1,
+  });
+  useEffect(() =>  dispatch(searchHotels(searchValue)), []);
+  
+  const handleChange = ({target}) => {
+    setSearchValue((prevState) => ({
+      ...prevState,
+      [target.name]: target.value,
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(loadCity(parametrs.city, parametrs.date, 2));
+    dispatch(searchHotels(searchValue));
   };
   return (
     <form className="form" onSubmit={handleSubmit}>
@@ -23,25 +32,26 @@ const SearchForm = () => {
           name="city"
           id="city"
           className="login__input "
-          placeholder={parametrs.city}
+          value = {searchValue.city}
+          // placeholder={parametrs.city}
           onChange={handleChange}
         />
         <label htmlFor="#date" className = 'login__lable'>Дата заселения</label>
         <input
           type="date"
-          name="date"
+          name="checkIn"
           id="id"
           className="login__input"
-          value={parametrs.date}
+          value={searchValue.checkIn}
           onChange={handleChange}
         />
         <label htmlFor="#days" className = 'login__lable'>Количиство дней</label>
         <input
           type="text"
-          name="countDay"
+          name="countDays"
           id = "days"
           className="login__input"
-          placeholder={parametrs.countDay}
+          value={searchValue.countDays}
           onChange={handleChange}
         />
         <input type="submit" className="login__btn" value="Поиск" />
