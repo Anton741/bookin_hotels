@@ -10,9 +10,9 @@ const Login = () => {
   const validationSchema = Yup.object().shape({
     password: Yup.string()
       .required('Обязательно для заполнения')
-      .min(6, 'Пароль должен содержать не менее 8 символов'),
-      // .matches(/(?=.*[0-9])/, 'Пароль должен содержать хотя бы одно число.')
-      // .matches(/(?=.*[!@#$%^&*])/, 'Пароль должен содержать хотя бы один спецсимвол .'),
+      .min(8, 'Пароль должен содержать не менее 8 символов')
+      .matches(/(?=.*[0-9])/, 'Пароль должен содержать хотя бы одно число.')
+      .matches(/(?=.*[!@#$%^&*])/, 'Пароль должен содержать хотя бы один спецсимвол .'),
     email: Yup.string().required('Email is required').email('Email is invalid'),
   });
   const [inputValue, setInputValue] = useState({password: "", email:""})
