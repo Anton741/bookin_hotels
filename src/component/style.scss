@@ -11,8 +11,9 @@
 
 body{
   font-family: Roboto;
+  box-sizing: border-box;
 }
-p{
+p,h1,h2,h3{
     margin:0;
     padding: 0;
   }
@@ -20,7 +21,8 @@ p{
  //------HOTEL CARD---------- 
 .hotel{
   &__card{
-    display: flex;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 0.5fr;
     align-items: center;
     padding: 16px 0;
     border-bottom: 1px solid rgba(135, 135, 135, 0.2);
@@ -29,9 +31,12 @@ p{
     font-size: 17px;
     line-height: 22px;
     color: #424242;
+    &-favourites{
+      grid-template-columns: 1fr 0.5fr;
+    }
   }
   &__column{
-    margin: 0 24px 0;
+    // margin: 0 24px 0;
     &-big{
       flex:1 auto;
     }
@@ -61,21 +66,31 @@ p{
 }
 //------MAIN BLOCK-------
 .main{
+  &__row{
+    // padding: 30px 196px;
+  }
   &__body{
-    display: flex;
-    flex-direction: column;
-    align-items: end;
+    display: grid;
+    grid-template-rows: 92px 1 fr;
+    justify-content: center;
+    align-items:center;
     background-color: #E5E5E5;
   }
   &__content{
     display: grid;
-    grid-template-columns: 1.5fr 2fr;
+    grid-template-columns: 0.5fr 1fr;
     grid-column-gap: 24px;
-    padding: 30px 196px;
+    padding: 30px 7%;
+  }
+  &__column{
+    &-small{
+      display: grid;
+      grid-template-rows: 0.5fr 1fr;
+    }
   }
 }
 .column{
-  padding: 32px;
+  padding: 10%;
   background-color:#FFFFFF;
   box-shadow: 0px 4px 33px rgba(0, 0, 0, 0.04);
   border-radius: 16px;
@@ -87,13 +102,15 @@ p{
 //---------- EXIT BUTTON----------
 .exit{
   &__btn{
-    display: flex;
+    display: grid;
+    grid-template-columns: max-content max-content;
     align-items:center;
+    justify-content: end;
     font-size: 16px;
     line-height: 20px;
     letter-spacing: -0.408px;
     color: #41522E;
-    margin: 42px 35px 0;
+    margin: 42px 66px 0;
     cursor: pointer;
   }
     &__icon{
@@ -101,9 +118,10 @@ p{
     }
 }
 // ---------LEFT COLUMN----------
+
 .small-column__raw{
   display:flex;
-  align-items: center;
+  // align-items: center;
   &:first-child{
     margin: 0 0 24px;
     justify-content: center;
@@ -113,6 +131,9 @@ p{
 .favorites{
   max-height: 474px;
   overflow: scroll;
+  &__title{
+    margin: 0 0 32px 0;
+  }
 &__sorting{
   display: flex;
 }
@@ -175,9 +196,18 @@ p{
   }
 }
 .slider{
-  display:flex;
-  width: 50vw;
-  overflow: scroll;
+  max-width: 43vw;
+  &__wrapper{
+  // display:flex;
+  // width: 100%;
+  // overflow: scroll;
+  display: grid;
+  grid: auto / auto-flow max-content;
+  grid-gap: 1em;
+  align-items: center;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  }
 }
 .hotel__rate{
   display: flex;
@@ -275,9 +305,10 @@ p{
 }
 .alert{
   color: #EB1717 !important;
-  &-danger{
+  &-danger p{
   margin: 0 0 20px;
   font-size: 12px;
   line-height: 14px;
   }
 }
+

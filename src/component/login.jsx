@@ -2,15 +2,17 @@ import {useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import {useState, useEffect} from "react"
 import { logIn } from '../redux/action';
-import Form from './form'
+import LoginForm from './form/loginForm';
+import Errors from './erorrs'
 import * as Yup from 'yup';
 
-const Authentication = () => {
+const Login = () => {
   const validationSchema = Yup.object().shape({
     password: Yup.string()
-      .required('Password is required')
-      .min(6, 'Password must be at least 6 characters')
-      .max(40, 'Password must not exceed 40 characters'),
+      .required('Обязательно для заполнения')
+      .min(6, 'Пароль должен содержать не менее 8 символов'),
+      // .matches(/(?=.*[0-9])/, 'Пароль должен содержать хотя бы одно число.')
+      // .matches(/(?=.*[!@#$%^&*])/, 'Пароль должен содержать хотя бы один спецсимвол .'),
     email: Yup.string().required('Email is required').email('Email is invalid'),
   });
   const [inputValue, setInputValue] = useState({password: "", email:""})
@@ -50,9 +52,10 @@ const Authentication = () => {
   return (
     <div className="authentication">
       <h1 className="authentication__title">Simple Hotel Check</h1>
-      <Form handleChange={handleChange} handleSubmit={handleSubmit} error = {error}/>
+      {isLogin === false && <Errors error={"Неправильный логин или пароль"} />}
+      <LoginForm handleChange={handleChange} handleSubmit={handleSubmit} error = {error}/>
     </div>
   );
 }
 
-export default Authentication;
+export default Login;

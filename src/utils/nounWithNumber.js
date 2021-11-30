@@ -3,12 +3,12 @@ export function nounDays(number){
       number = String(number);
       if (['2', '3', '4'].includes(number[number.length - 1])) {
         return 'дня'}
-      else if ('1' === number[number.length - 1]) {return `${number} - день`;} 
-      else {return `${number} - дней`;}
+      else if ('1' === number[number.length - 1]) {return `${number} день`;} 
+      else {return `${number} дней`;}
     } else {
-      if (['2', '3', '4'].includes(number)) {return `${number} - дня`}
-      else if (1 === number) {return`${number} - день`} 
-      else {return `${number} - дней`}
+      if (['2', '3', '4'].includes(number)) {return `${number} дня`}
+      else if (1 === number) {return`${number} день`} 
+      else {return `${number} дней`}
     }
   };
 

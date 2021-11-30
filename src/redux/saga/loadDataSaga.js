@@ -9,7 +9,6 @@ export function* loadHotelsSagaWatcher(){
 
 function* loadData(action){
   const {payload} = action
-  console.log("pay", payload);
   const hotels = yield loadCity(payload);
-  yield put(setHotels({hotels: hotels, countDays: payload.countDays}))
+    yield put(setHotels({hotels: hotels, countDays: payload.countDays, checkIn: payload.checkIn, city: payload.city}))
 }

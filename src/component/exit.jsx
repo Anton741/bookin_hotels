@@ -5,7 +5,7 @@ const Exit = () => {
   const current_session = useSelector((state) => state.user); 
   const history = useHistory();
   const handleExit = () => {
-    current_session.isLogin = false
+    current_session.isLogin = null
     let users = JSON.parse(localStorage.getItem('users'));
     users.forEach(user => {
     if (user.id === current_session.current_user.id){

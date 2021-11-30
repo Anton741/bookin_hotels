@@ -1,61 +1,51 @@
-import Errors from './erorrs'
-const Form = ({handleSubmit, handleChange, error}) => {
+import Errors from '../erorrs'
+import TextField from './textField';
+const LoginForm = ({handleSubmit, handleChange, error}) => {
   return (
     <form className="form" onSubmit={handleSubmit}>
       <div className="form__body">
         <div className="login__input-login"></div>
-        <label
-          htmlFor="#email"
-          className={
+        <TextField
+          classLable={
             error
               ? error.email
                 ? 'login__lable  alert'
                 : 'login__lable '
               : 'login__lable'
           }
-        >
-          Логин
-        </label>
-        <input
-          type="text"
-          name="email"
-          id="email"
-          className={
+          classInput={
             error
               ? error.email
-                ? 'login__input  login__input-alert'
+                ? 'login__input  alert'
                 : 'login__input '
               : 'login__input'
           }
+          name="email"
           placeholder="Username"
           onChange={handleChange}
+          lable="Логин"
+          type="text"
         />
-        {error ? error.email && <Errors error={error.email} /> : null}
-        <label
-          htmlFor="#password"
-          className={
+        <TextField
+          classLable={
             error
               ? error.password
-                ? 'login__lable  login__lable-alert'
+                ? 'login__lable  alert'
                 : 'login__lable '
               : 'login__lable'
           }
-        >
-          Пароль
-        </label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          className={
+          classInput={
             error
               ? error.password
-                ? 'login__input  login__input-alert'
+                ? 'login__input  alert'
                 : 'login__input '
               : 'login__input'
           }
+          name="password"
           placeholder="Password"
           onChange={handleChange}
+          lable="Пароль"
+          type="password"
         />
         {error ? error.password && <Errors error={error.password} /> : null}
         <input type="submit" className="login__btn" value="Войти" />
@@ -63,4 +53,4 @@ const Form = ({handleSubmit, handleChange, error}) => {
     </form>
   );
 }
-export default Form;
+export default LoginForm;

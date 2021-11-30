@@ -22,37 +22,16 @@ export function logIn({password, email}){
   }
 }
 
-
-// export function showAlert(message, target){
-//   console.log({[target]: message});
-//   return {
-//     type: SHOW_ALERT,
-//     payload: {[target]: message}
-//   }
-// }
-
-
-
-
-
 export function clickOnFavourites(bookmark){
-  console.log(bookmark);
   return {
     type: CLICK_FAVORITE,
     payload: bookmark,
   }
 }
-// export function deleteBookmark(bookmark){
-//   return {
-//     type: DELETE_BOOKMARK,
-//     payload: bookmark,
-//   }
-// }
 
-// export function sortingHotel(item){
-//   return {
-//     type: SORTING,
-//     payload: item
-//   }
-
-// }
+export function setSearch(payload){
+  return {
+    type: CLICK_FAVORITE,
+    payload: payload,
+  }
+}

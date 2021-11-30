@@ -1,13 +1,26 @@
-import SearchForm from '../component/searchForm';
-import Favourites from '../component/favourites';
+import {useState} from "react"
+import SearchForm from '../component/form/searchForm';
+import Favourites from '../component/favouritesBlock';
 import LineCountFavourites from '../component/lineCounFavorites';
-// import PathLine from '../component/pathLine';
+import PathLine from '../component/pathLine';
 import Exit from '../component/exit';
 import Hotels from '../component/hotels';
 import Carousel from '../component/carousel';
 
 
 const Main = () => {
+  const [searchValue, setSearchValue] = useState({
+    city: 'Москва',
+    checkIn: new Date().toISOString().slice(0, 10),
+    countDays: 1,
+  });
+  
+  const handleChange = ({ target }) => {
+    setSearchValue((prevState) => ({
+      ...prevState,
+      [target.name]: target.value,
+    }));
+  };
   return (
     <div className="main__page">
       <div className="main__body">
@@ -18,7 +31,7 @@ const Main = () => {
           <div className="main__content">
             <div className="main__column-small">
               <div className="small-column__raw column">
-                <SearchForm />
+                <SearchForm onHandleChange = {handleChange} searchValue={searchValue}/>
               </div>
               <div className="small-column__raw column">
                 <Favourites />
@@ -26,7 +39,7 @@ const Main = () => {
             </div>
             <div className="main__column-big column">
               <div className="big-column__row">
-                {/* <PathLine /> */}
+                <PathLine city = {searchValue.city} date = {searchValue.checkIn} />
               </div>
               <div className="big-column__row">
                 <Carousel />
