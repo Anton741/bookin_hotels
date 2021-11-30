@@ -1,7 +1,7 @@
 import React from 'react';
-import img1 from '../img/slider/img1.png';
-import img2 from '../img/slider/img2.png';
-import img3 from '../img/slider/img3.png';
+import img1 from '../assets/slider/img1'
+import img2 from '../assets/slider/img2.png';
+import img3 from '../assets/slider/img3.png';
 
 const Carousel = () => {
   const imagesPath = [];
