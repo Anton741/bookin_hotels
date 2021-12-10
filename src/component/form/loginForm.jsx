@@ -26,6 +26,7 @@ const LoginForm = ({handleSubmit, handleChange, error}) => {
           lable="Логин"
           type="text"
         />
+        {error ? error.email && <Errors error={error.email} /> : null}
         <TextField
           classLable={
             error
