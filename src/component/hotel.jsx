@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {clickOnFavourites} from '../redux/action'
 import dateFormat from 'dateformat';
 import {nounDays} from '../utils/nounWithNumber'
-import imgPath from '../img/house.svg';
+import imgPath from '../assets/house.svg';
 import HotelRate from './hotelRate';
 import Bookmarks from './addBookmarkBtn';
 
