@@ -13,7 +13,7 @@ const Login = () => {
       .min(8, 'Пароль должен содержать не менее 8 символов')
       .matches(/(?=.*[0-9])/, 'Пароль должен содержать хотя бы одно число.')
       .matches(/(?=.*[!@#$%^&*])/, 'Пароль должен содержать хотя бы один спецсимвол .'),
-    email: Yup.string().required('Email is required').email('Email is invalid'),
+    email: Yup.string().required('Обязательно для заполнения').email(' Введите email в формате example@mail.ru'),
   });
   const [inputValue, setInputValue] = useState({password: "", email:""})
   const [error, setError] = useState(null)
